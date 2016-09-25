@@ -1,6 +1,6 @@
 'use strict';
 const express = require('express');
-const db = require('../../db/db.js');
+const db = require('../db/db.js');
 let router = express.Router();
 
 let sendJsonResponse = (res, obj = {}) => {

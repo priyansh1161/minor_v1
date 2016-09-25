@@ -1,6 +1,6 @@
 'use strict';
 const mongoose = require('mongoose');
-const config = require('../config.js');
+const config = require('../../config.js');
 
 const DB_URL = process.env.NODE_ENV === 'production' ? config.PRODUCTION_DB_URL : config.DEV_DB_URL;
 

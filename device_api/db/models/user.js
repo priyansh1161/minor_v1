@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 let Schema = mongoose.Schema;
 
-let VoilationSchema = new Schema({
+let ViolationSchema = new Schema({
     type : {type : String, default : 'Red light jump'},
-    on : {type : Date, default: Date.now},
+    registeredOn : {type : Date, default: Date.now},
     fine : {type : Number, default : 500},
     isDue : {type : Boolean, default : true}
 });
@@ -17,7 +17,7 @@ let UserSchema = new Schema({
    email : {type : String, required : true, unique : true},
    hash : String,
    salt : String,
-   violations : [VoilationSchema],
+   violations : [ViolationSchema],
    carId : {type : String, unique : true}
 });
 
@@ -48,3 +48,4 @@ UserSchema.methods.ValidatePassword = function (passkey) {
 };
 
 mongoose.model('User', UserSchema);
+module.exports = UserSchema;
