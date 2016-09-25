@@ -12,7 +12,7 @@ let ViolationSchema = new Schema({
 
 let UserSchema = new Schema({
    name : {type : String, required : true},
-   addr : {type : String, required : true},
+   address : {type : String, required : true},
    phone : {type : Number, max : 10, min : 10},
    email : {type : String, required : true, unique : true},
    hash : String,
@@ -23,14 +23,19 @@ let UserSchema = new Schema({
 
 UserSchema.methods.setPassword = function (passKey) {
   let salt = crypto.randomBytes(16).toString('hex');
-  crypto.pbkdf2(passKey, salt, 1000, 256, 'sha256', (err, hash) => {
-    if (err)
-        throw new Error('Can not set password');
-    else {
-        this.hash = hash.toString('hex');
-        this.salt = salt;
-    }
-  });
+    console.log(passKey);
+    return new Promise( (resolve, reject) => {
+        crypto.pbkdf2(passKey, salt, 1000, 256, 'sha256', (err, hash) => {
+            if (err)
+                reject('Can not set password');
+            else {
+                this.hash = hash.toString('hex');
+                this.salt = salt;
+                resolve(this);
+            }
+        });
+    });
+
 };
 UserSchema.methods.ValidatePassword = function (passkey) {
     return new Promise( (resolve, reject) => {
