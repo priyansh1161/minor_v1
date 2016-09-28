@@ -1,6 +1,7 @@
 'use strict';
 const express = require('express');
 const db = require('../db/db.js');
+const mailService = require('../../utils/mail-service');
 let router = express.Router();
 
 let sendJsonResponse = (res, obj = {}) => {
@@ -14,6 +15,7 @@ router.post('/', (req, res) => {
     db.registerViolation(req.body)
         .then((data) => {
             // find criminal aka by and send him a email notifying details.
+            mailService(data.email, data.violations[data.violations.length -1]);
             console.log(`Sent: ${data}`);
             sendJsonResponse(res, {data})
         })

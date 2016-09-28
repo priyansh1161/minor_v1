@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Device = mongoose.model('Device');
 const User = mongoose.model('User');
 let db = {};
-
+// uniqueCode is _id
 db.registerViolation = ({crime, uniqueCode, by, time}, ...rest) => {
     return new Promise((resolve, reject) => {
         var register = (data) => {
@@ -18,8 +18,10 @@ db.registerViolation = ({crime, uniqueCode, by, time}, ...rest) => {
                     user.save((err, updated) => {
                         if(err)
                             reject(err.message);
-                        else
+                        else {
+                            console.log(updated);
                             resolve(updated);
+                        }
                     });
                 };
                 User
@@ -35,7 +37,7 @@ db.registerViolation = ({crime, uniqueCode, by, time}, ...rest) => {
         };
         // find if uniqueCode is correct
         Device
-            .findOne({uniqueCode})
+            .findById(uniqueCode)
             .exec()
             .then(register)
             .then(data => resolve(data))
