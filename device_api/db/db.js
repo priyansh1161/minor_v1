@@ -8,9 +8,11 @@ db.registerViolation = ({crime, uniqueCode, by, time}, ...rest) => {
     return new Promise((resolve, reject) => {
         var register = (data) => {
             if (!data)
-                return Promise.reject('Wrong Key');
+                return Promise.reject('Wrong Device Key');
             return new Promise((resolve, reject) => {
                 let registerUtil = (user) => {
+                    if(!user)
+                       return reject('Wrong User key');
                     user.violations.push({
                         on : time,
                         type : crime
@@ -19,7 +21,7 @@ db.registerViolation = ({crime, uniqueCode, by, time}, ...rest) => {
                         if(err)
                             reject(err.message);
                         else {
-                            console.log(updated);
+                            // console.log(updated);
                             resolve(updated);
                         }
                     });
