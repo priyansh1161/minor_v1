@@ -11,7 +11,7 @@ due to which You are charged ${fine} as fine which is due and Should be payed be
 <p style="font-size: 10px">This is a auto generated mail and should not be replied to.</p>`;
     let data = {
         from : 'Traffic Police <priyansh@sandboxb3607db403f448ab8cbae0fddbdff757.mailgun.org>',
-        to : 'priyanshgupta1161@gmail.com',
+        to,
         subject : 'Red light jump Fine',
         html
     };

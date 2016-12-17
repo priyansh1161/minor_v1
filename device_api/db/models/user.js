@@ -14,11 +14,11 @@ let UserSchema = new Schema({
    name : {type : String, required : true},
    address : {type : String, required : true},
    phone : {type : Number, max : 10, min : 10},
-   email : {type : String, required : true, unique : true},
+   email : {type : String, required : true},
    hash : String,
    salt : String,
    violations : [ViolationSchema],
-   carId : {type : String, unique : true}
+   carId : {type : String}
 });
 
 UserSchema.methods.setPassword = function (passKey) {

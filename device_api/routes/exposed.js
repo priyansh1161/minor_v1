@@ -10,8 +10,10 @@ let sendJsonResponse = (res, obj = {}) => {
 };
 
 router.post('/', (req, res) => {
+    req.body.by = req.body.by.substr(1);
     // This is the Function for getting the data from device and populating data to dB and then to
     // user.
+    console.log(req.body,'sags');
     db.registerViolation(req.body)
         .then((data) => {
             // find criminal aka by and send him a email notifying details.

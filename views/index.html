@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Traffic Monitoring</title>
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script src="./jquery.datetimepicker.full.min.js"></script>
+    <script src="./charts.js"></script>
+    <link rel="stylesheet" href="./materialize/css/materialize.min.css">
+    <script src="./materialize/js/materialize.min.js"></script>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./jquery.datetimepicker.min.css">
+</head>
+<body>
+<nav class="blue-grey">
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo pad-left">IOT</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/doc">Documentation</a></li>
+            <!--<li><a href="/login">Login</a></li>-->
+            <li ><a href="/signup">Sign up</a></li>
+            <li><a href="/">FAQ</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
+            <li><a href="/doc">Documentation</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/faq">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="row">
+    <div class="col s6 m4">
+        <div class="s4 m4 col input-field">
+            <input type="text" id="date_timepicker_start">
+            <label for="date_timepicker_start">Start</label>
+        </div>
+        <div class="s6 m4 col input-field ">
+            <input type="text" id="date_timepicker_end" >
+            <label for="date_timepicker_end">End</label>
+        </div>
+        <div class="input_field col s4 m4 clearfix">
+            <button class="btn" id="cal_submit">Show</button>
+        </div>
+
+    </div>
+    <div class="col s12 m4">
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+    <div class="col s12 m4">
+        <canvas id="week" width="400" height="400"></canvas>
+    </div>
+</div>
+<div class="row">
+    <table class="centered responsive-table striped">
+            <thead>
+            <tr>
+                <th data-field="id">Name</th>
+                <th data-field="name">Car Id</th>
+                <th data-field="price">Registered On</th>
+            </tr>
+            </thead>
+
+            <tbody id="tab">
+
+            </tbody>
+    </table>
+</div>
+
+</body>
+</html>

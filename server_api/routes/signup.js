@@ -8,6 +8,7 @@ const reCaptcha_PREFIX = 'https://www.google.com/recaptcha/api/siteverify?secret
 let User = mongoose.model('User');
 function sendJSON(res, status, data = {}) {
     res.status(status);
+    console.log('done');
     res.json(data);
 }
 var saveToDB = (req, res, body) => {
@@ -34,8 +35,9 @@ var saveToDB = (req, res, body) => {
            sendJSON(res, 500, {errmsg : reason.message});
         });
 
-
 };
+
+
 router.get('/', (req,res) => {
    res.sendFile('/views/signup.html',{root: '.'});
 });
